@@ -1,0 +1,9 @@
+# terraform 상태 관리파일은 push 안함
+*/.terraform/*
+*/terraform.tfstate
+*/terraform.tfstate.backup
+*/terraform.tfstate.d/*
+
+# docker terraform aws profile은 push 안함
+/docker-aws-config/*
+!/docker-aws-config/.keep
