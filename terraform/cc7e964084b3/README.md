@@ -1,4 +1,5 @@
-# Terraform 정보
+# Terraform에서 AWS에 있는 Secrets Manager의 값 참조하기
+## Terraform 정보
 - 버전 : 1.0.2
 - AWS CLI : 2.x
 
