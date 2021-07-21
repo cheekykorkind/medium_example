@@ -5,7 +5,7 @@
 
 ## Docker compose로 구축한 Terraform 사용법
 - 디렉토리 이동합니다
-  - `cd APP_ROOT/terraform`
+  - `cd APP_ROOT/terraform/cc7e964084b3`
 
 - docker 컨테이너를 백그라운드로 실행합니다
   - `DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker-compose up -d`
