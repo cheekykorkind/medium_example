@@ -1,5 +1,9 @@
 # Terraform변수정리(커맨드라인 인자, 데폴트값, tpl파일로 사용)
 
+## Terraform 정보
+- 버전 : 1.0.2
+- AWS CLI : 2.x
+
 ## 실험 순서
 1. docker compose가 있는 디렉토리로 이동합니다. 
   - `cd terraform/385f3ba4338b`
@@ -8,11 +12,11 @@
 3. docker 컨테이너에 들어갑니다.
   - `docker exec -it var_examples_tf /bin/bash`
 
-4. 試したい例があるterraformデレクトリーに移動します
+4. 예제가 있는 디렉토리로 이동해서 실험합니다.
   - 커맨드라인 인자로 Terraform 변수에 값을 할당하는 경우
     - `cd ~/terraform/examples/command-line`
     - `terraform init`
-    - `terraform apply -var="lambda_zip_path=my-zip-path"`
+    - `terraform apply -var="lambda_zip_path=zip파일경로"`
   - 커맨드라인에서 tfvars을 지정해서 Terraform 변수에 값을 할당하는 경우
     - `cd ~/terraform/examples/command-line`
     - `terraform init`
