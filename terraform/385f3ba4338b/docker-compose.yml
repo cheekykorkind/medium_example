@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  var_examples_tf:
+    container_name: 'var_examples_tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    environment:
+      AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+      AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      AWS_DEFAULT_REGION: us-east-1
+    working_dir: '/home/$USER/terraform/examples'
+    volumes:
+      - ./examples:/home/$USER/terraform/examples
+    entrypoint: |
+      sh -e -c "
+      sudo chown -R $USER /home/$USER
+      /bin/sh
+      "
+
+networks:
+  default:
+    name: var_examples_tf_net
