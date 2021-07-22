@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  state_mv_tf:
+    container_name: 'state_mv_tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '/home/$USER/terraform'
+    volumes:
+      - ./docker-aws-config:/home/$USER/.aws # docker에서 설정한 aws profile을 영구보존하기 위함. 싫다면 파일지우고, volume도 중단
+      - .:/home/$USER/terraform
+    entrypoint: |
+      sh -e -c "
+      sudo chown -R $USER /home/$USER
+      /bin/sh
+      "
+
+networks:
+  default:
+    name: state_mv_tf_net

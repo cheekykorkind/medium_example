@@ -5,3 +5,4 @@
 [Terraform변수정리(커맨드라인 인자, 데폴트값, tpl파일로 사용)](terraform/385f3ba4338b)  
 [Terraform data정리(AWS account id하드 코딩하기 싫은데…)](terraform/b35384307b49)  
 [Terraform의 Root Module정리](terraform/11d3ba5da84a)  
+[Terraform state mv정리(resource를 module로 바꿨을뿐인데 왜 destroy하려하는거야!?)](terraform/6213178093f1)  
