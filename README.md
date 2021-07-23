@@ -6,3 +6,4 @@
 [Terraform data정리(AWS account id하드 코딩하기 싫은데…)](terraform/b35384307b49)  
 [Terraform의 Root Module정리](terraform/11d3ba5da84a)  
 [Terraform state mv정리(resource를 module로 바꿨을뿐인데 왜 destroy하려하는거야!?)](terraform/6213178093f1)  
+[Terraform import정리(AWS콘솔에서 클릭으로 만든건데 반영안될까?)](terraform/d3852b0701d9)  
