@@ -7,3 +7,4 @@
 [Terraform의 Root Module정리](terraform/11d3ba5da84a)  
 [Terraform state mv정리(resource를 module로 바꿨을뿐인데 왜 destroy하려하는거야!?)](terraform/6213178093f1)  
 [Terraform import정리(AWS콘솔에서 클릭으로 만든건데 반영안될까?)](terraform/d3852b0701d9)  
+[Terraform console정리(이거 arn있나? name같은거 가지고있나?)](terraform/12079bac344f)  
