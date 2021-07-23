@@ -1,4 +1,4 @@
-# Terraform에서 AWS에 있는 Secrets Manager의 값 참조하기
+# Terraform import정리(AWS콘솔에서 클릭으로 만든건데 반영안될까?)
 ## Terraform 정보
 - 버전 : 1.0.2
 - AWS CLI : 2.x
