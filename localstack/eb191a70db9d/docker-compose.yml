@@ -1,0 +1,58 @@
+version: '3.8'
+
+# AWS_ACCESS_KEY_ID랑 AWS_SECRET_ACCESS_KEY는 개발환경용 의미없는 값이라 여기에 하드코딩했지만, 실제로 운용할때는 하드코딩하지 않도록 주의
+x-AWS_ENV: &AWS_ENV
+  AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+  AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  AWS_DEFAULT_REGION: us-east-1
+
+services:
+  localstack_init_by_shell:
+    container_name: 'localstack_init_by_shell'
+    image: localstack/localstack:0.12.15
+    ports:
+      - '4566:4566'
+    environment:
+      <<: *AWS_ENV
+      SERVICES: s3
+      DEBUG: 1
+      EDGE_PORT: 4566
+    volumes:
+      - ./init_my_aws:/docker-entrypoint-initaws.d
+      - ./tmp/localstack:/tmp/localstack
+    networks:
+      app_net:
+        ipv4_address: 192.168.255.2
+
+  check_localstack_init_by_shell:
+    container_name: 'check_localstack_init_by_shell'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '/home/$USER/terraform'
+    volumes:
+      - .:/home/$USER/terraform
+    networks:
+      app_net:
+        ipv4_address: 192.168.255.3
+    environment:
+      <<: *AWS_ENV
+    entrypoint: |
+      sh -e -c "
+      sudo chown -R $USER /home/$USER
+      /bin/sh
+      "
+
+# 설명하기 편하게 도커 컨테이너의 IP를 고정
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.255.0/24
