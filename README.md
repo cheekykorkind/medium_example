@@ -10,3 +10,4 @@
 [Terraform console정리(이거 arn있나? name같은거 가지고있나?)](terraform/12079bac344f)  
 [Terraform provider alias정리(전부 ap-northeast-1인데 하나만 us-east-1하고 싶은데?)](terraform/1d68672d5bbc)  
 [Terraform target정리(state list로 원하는 리소스 골라서 apply)](terraform/d684a28d8e3)  
+[LocalStack이라면 개발할때 실제 AWS사용하듯 개발가능하다](localstack/eb191a70db9d)  
