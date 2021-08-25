@@ -10,7 +10,7 @@
   - `cd APP_ROOT/localstack/47c368f0fa17`
 
 - Localstack docker 컨테이너를 포어그라운드로 실행합니다
-  - Localstack이 init_my_aws의 스크립트를 실행했는지 확인하기 위해서입니다.
+  - Localstack의 Lambda가 사용가능한지 확인하기 위해서 입니다
   - `DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker-compose up`
   - 아래같은 로그가 보였다면 Localstack의 Lambda가 사용가능합니다(=Terraform으로 Provisioning해도 됩니다)
 
