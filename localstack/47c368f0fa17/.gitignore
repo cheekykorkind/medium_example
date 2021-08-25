@@ -1,0 +1,23 @@
+# terraform 상태 관리파일은 push 안함
+*/.terraform/*
+.terraform
+*/terraform.tfstate
+terraform.tfstate
+*/terraform.tfstate.backup
+terraform.tfstate.backup
+*/terraform.tfstate.d/*
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
+
+# localstack 임시파일은 push 안함
+tmp/localstack/*
+
+# Lambda에 사용할 패키지 파일들은 관리 안함
+/modules/scripts/packages/*
+!/modules/scripts/packages/.keep
+
+# Lambda에 사용할 zip파일은 같은내용을 압축해도 파일이 변하므로 관리 안함
+app.zip
+
+# aws lambda invoke 실행 결과로 만들어지는 파일은 관리 안함
+response.json
