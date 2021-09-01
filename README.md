@@ -12,3 +12,4 @@
 [Terraform target정리(state list로 원하는 리소스 골라서 apply)](terraform/d684a28d8e3)  
 [LocalStack이라면 개발할때 실제 AWS사용하듯 개발가능하다](localstack/eb191a70db9d)  
 [Localstack을 Terraform으로 Provisioning!](localstack/47c368f0fa17)  
+[Localstack에 AWS SAM을 Deploy하는 두가지 방법](localstack/cdba280f0a48)  
