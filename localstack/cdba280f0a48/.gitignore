@@ -1,0 +1,23 @@
+# terraform 상태 관리파일은 push 안함
+*/.terraform/*
+.terraform
+*/terraform.tfstate
+terraform.tfstate
+*/terraform.tfstate.backup
+terraform.tfstate.backup
+*/terraform.tfstate.d/*
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
+
+# localstack 임시파일은 push 안함
+tmp/*
+!/tmp/.keep
+
+
+# aws lambda invoke 실행 결과로 만들어지는 파일은 관리 안함
+response.json
+
+# SAM과 관련해서 동적으로 생성되는 파일은 관리 안함
+cfn_tf_samlocal.yaml
+cfn_samlocal.yaml
+*/.aws-sam/*

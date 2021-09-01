@@ -1,0 +1,59 @@
+version: '3.8'
+
+# AWS_ACCESS_KEY_ID랑 AWS_SECRET_ACCESS_KEY는 개발환경용 의미없는 값이라 여기에 하드코딩했지만, 실제로 운용할때는 하드코딩하지 않도록 주의
+x-AWS_ENV: &AWS_ENV
+  AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+  AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  AWS_DEFAULT_REGION: us-east-1
+
+services:
+  localstack_sam:
+    container_name: 'localstack_sam'
+    image: localstack/localstack:0.12.15
+    ports:
+      - '4566:4566'
+    environment:
+      <<: *AWS_ENV
+      # SERVICES: lambda,s3,cloudformation,apigateway,iam
+      DEBUG: 1
+      EDGE_PORT: 4566
+    volumes:
+      - ./init_my_aws:/docker-entrypoint-initaws.d
+      - ./tmp/localstack:/tmp/localstack
+    networks:
+      app_net:
+        ipv4_address: 192.168.255.6
+
+  samlocal_and_tf:
+    container_name: 'samlocal_and_tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '/home/$USER/terraform'
+    volumes:
+      - .:/home/$USER/terraform
+    networks:
+      app_net:
+        ipv4_address: 192.168.255.7
+    environment:
+      <<: *AWS_ENV
+      LOCALSTACK_HOSTNAME: 192.168.255.6 # aws-sam-cli-local의 내부의 endpoint url을 설정하기 위해서 필요
+    entrypoint: |
+      bash -e -c "
+      sudo chown -R $USER /home/$USER
+      /bin/bash
+      "
+
+# 설명하기 편하게 도커 컨테이너의 IP를 고정
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.255.0/24
