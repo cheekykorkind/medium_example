@@ -40,7 +40,7 @@ samlocal package \
 
 samlocal --debug deploy \
   --no-fail-on-empty-changeset \
-  --stack-name my_samlocal \
+  --stack-name my-samlocal \
   --template ./cfn_samlocal.yaml
   --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
