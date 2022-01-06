@@ -1,0 +1,3 @@
+# docker terraform aws profile은 push 안함
+/docker-aws-config/*
+!/docker-aws-config/.keep

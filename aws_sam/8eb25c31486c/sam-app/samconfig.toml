@@ -1,0 +1,25 @@
+version = 0.1
+
+[default]
+[default.build]
+[default.build.parameters]
+region = "ap-northeast-1"
+profile="lambda_with_codepipeline_event"
+
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "lambda-with-codepipeline-event"
+region = "ap-northeast-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_NAMED_IAM"
+disable_rollback = false
+image_repositories = []
+s3_bucket = "bucket-for-sam-296t13" # AWS콘솔에서 미리 만들어야함, 유니크한 이름이 되도록 만들어야함.
+s3_prefix = "lambda-with-codepipeline-event"
+profile="lambda_with_codepipeline_event"
+
+[default.delete]
+[default.delete.parameters]
+stack_name = "lambda-with-codepipeline-event"
+region = "ap-northeast-1"
+profile="lambda_with_codepipeline_event"
