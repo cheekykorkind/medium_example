@@ -1,5 +1,5 @@
 # SAM으로 CodePipeline상태를 Slack에 보내는 Lambda만들기
-- 이 프로젝트는 Codepipe의 상태에 따라서 Slack에 메세지를 보내는 Lambda를 만들어줍니다.
+- 이 프로젝트는 Codepipeline의 상태에 따라서 Slack에 메세지를 보내는 Lambda를 만들어줍니다.
   - Codepipeline이 이미 존재한다고 가정했습니다.(SAM에서 Codepipeline 안만듭니다)
 
 ## SAM 정보
