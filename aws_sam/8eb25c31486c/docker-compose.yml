@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  lambda_with_codepipeline_event:
+    container_name: 'lambda_with_codepipeline_event'
+    build:
+      context: .
+    tty: true
+    volumes:
+      - ./docker-aws-config:/root/.aws # docker에서 설정한 aws profile을 영구보존하기 위함. 싫다면 파일지우고, volume도 중단
+      - .:/root/sam_c
+    working_dir: '/root/sam_c'
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: lambda_with_codepipeline_event_net
