@@ -39,7 +39,7 @@ Resources:
         source:
           - aws.codepipeline
         detail-type:
-          - CodePipeline Pipeline Execution State Change
+          - CodePipeline Pipeline Execution State Change # https://docs.aws.amazon.com/codepipeline/latest/userguide/detect-state-changes-cloudwatch-events.html
         detail:
           state:
             - STARTED
