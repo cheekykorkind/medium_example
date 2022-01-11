@@ -1,0 +1,13 @@
+# terraformの状態ファイルはpushしない
+*/.terraform/*
+.terraform
+*/terraform.tfstate
+terraform.tfstate
+*/terraform.tfstate.backup
+terraform.tfstate.backup
+*/terraform.tfstate.d/*
+.terraform.tfstate.lock.info
+
+# dockerのterraformのaws profileはpushしない
+/docker-aws-config/*
+!/docker-aws-config/.keep
