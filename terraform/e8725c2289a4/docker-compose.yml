@@ -10,15 +10,12 @@ services:
         GID: $DOCKER_GID
         UNAME: $USER
     tty: true
-    working_dir: '/home/$USER/terraform'
+    working_dir: '/home/$USER/workspace/terraform/e8725c2289a4'
     volumes:
       - ./docker-aws-config:/home/$USER/.aws # docker에서 설정한 aws profile을 영구보존하기 위함. 싫다면 파일지우고, volume도 중단
-      - .:/home/$USER/terraform
-    entrypoint: |
-      bash -e -c "
-      sudo chown -R $USER /home/$USER
-      /bin/bash
-      "
+      - ../../:/home/$USER/workspace
+      - ~/.gitconfig:/home/$USER/.gitconfig:ro # docker에서 호스트 머신의 깃허브정보를 참조. read only
+    entrypoint: /bin/bash
 
 networks:
   default:
