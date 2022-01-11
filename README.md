@@ -14,3 +14,4 @@
 [Localstack을 Terraform으로 Provisioning!](localstack/47c368f0fa17)  
 [Localstack에 AWS SAM을 Deploy하는 두가지 방법](localstack/cdba280f0a48)  
 [SAM으로 CodePipeline상태를 Slack에 보내는 Lambda만들기](aws_sam/8eb25c31486c)  
+[# Terraform으로 AWS CodePipeline(S3 cp를 Source로) + CodeBuild만들기](terraform/e8725c2289a4)  
