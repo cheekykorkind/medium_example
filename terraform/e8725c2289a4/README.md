@@ -26,7 +26,9 @@ Default output format [None]:
 ```
 
 - terraform 실행!!
+  - `cd ~/workspace/terraform/e8725c2289a4/terraform`
   - `terraform init`
   - `terraform apply`
 - deploy_by_cp_s3.sh 실행!!
+  - `cd ~/workspace/terraform/e8725c2289a4`
   - `sh deploy_by_cp_s3.sh`
