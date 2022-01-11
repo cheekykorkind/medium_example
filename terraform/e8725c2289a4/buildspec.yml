@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    # https://github.com/aws/aws-codebuild-docker-images/blob/master/ubuntu/standard/4.0/Dockerfile
+    runtime-versions:
+      ruby: 2.7
+
+  pre_build:
+    commands:
+      - echo "hi"
+      - pwd
+      - ls -al
