@@ -12,5 +12,5 @@ variable app_env {
 
 variable buildspec_file_path {
   type = string
-  default = "terraform/e8725c2289a4/buildspec.yml"
+  default = "buildspec.yml"
 }
