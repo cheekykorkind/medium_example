@@ -11,5 +11,5 @@ terraform {
 
 provider "aws" {
   region  = "ap-northeast-1"
-  profile = "codepipeline_src_s3"
+  profile = "codepipeline-src-s3-tf"
 }

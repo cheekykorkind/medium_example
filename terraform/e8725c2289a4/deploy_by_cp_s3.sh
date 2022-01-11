@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AWS_PROFILE_NAME=codepipeline_src_s3
+AWS_PROFILE_NAME=codepipeline-src-s3-tf
 AWS_APP_NAME=codepipeline-src-s3
 
 git archive -o build.zip HEAD
