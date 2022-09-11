@@ -1,0 +1,61 @@
+version: 0.2
+
+phases:
+  install:
+    # https://github.com/aws/aws-codebuild-docker-images/blob/master/ubuntu/standard/4.0/Dockerfile
+    runtime-versions:
+      python: 3.9
+
+  pre_build:
+    commands:
+      - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
+
+      # docker pull limit대응
+      - ECR_NGINX_URI=$MAIN_REPOSITORY_URL:nginx-1.23
+      - DOCKER_NGINX_URI=nginx:1.23
+      - docker pull $ECR_NGINX_URI || (docker pull $DOCKER_NGINX_URI && docker tag $DOCKER_NGINX_URI $ECR_NGINX_URI && docker push $ECR_NGINX_URI && true)
+
+  build:
+    commands:
+      - ECR_NGINX_URI=$MAIN_REPOSITORY_URL:latest
+      - docker build -t $ECR_NGINX_URI --build-arg ECR_NGINX_URI=$ECR_NGINX_URI --file ./nginx/Dockerfile .
+      - docker push $ECR_NGINX_URI
+
+  post_build:
+    commands:
+      - export EDITED_TASK_DEF1=task_definition.json
+      - export LAST_TASK_DEF_ARN1=$(aws ecs list-task-definitions --family-prefix $ECS_FAMILY --sort DESC --max-items 1 --query 'taskDefinitionArns[0]' --output json)
+
+      # LAST_TASK_DEF_ARN1의 결과값에 「"」가 붙어있음. 지워야함
+      - LAST_TASK_DEF_ARN1="${LAST_TASK_DEF_ARN1%\"}"
+      - LAST_TASK_DEF_ARN1="${LAST_TASK_DEF_ARN1#\"}"
+      - echo $LAST_TASK_DEF_ARN1
+      - aws ecs describe-task-definition --task-definition $LAST_TASK_DEF_ARN1 --output json | jq . > origin_task_definition1.json
+      
+      - cat server/appspec.yaml | sed -e s@\<ONE_CONTAINER_NAME\>@$ONE_CONTAINER_NAME@ > appspec.yaml
+
+      # LAST_TASK_DEF_ARN2의 결과값에 「"」가 붙어있음. 지워야함
+      - export EDITED_TASK_DEF2=task_definition_two.json
+      - export LAST_TASK_DEF_ARN2=$(aws ecs list-task-definitions --family-prefix $ECS_TWO_FAMILY --sort DESC --max-items 1 --query 'taskDefinitionArns[0]' --output json)
+
+      - LAST_TASK_DEF_ARN2="${LAST_TASK_DEF_ARN2%\"}"
+      - LAST_TASK_DEF_ARN2="${LAST_TASK_DEF_ARN2#\"}"
+      - echo $LAST_TASK_DEF_ARN2
+      - aws ecs describe-task-definition --task-definition $LAST_TASK_DEF_ARN2 --output json | jq . > origin_task_definition2.json
+
+      - cat server/appspec_two.yaml | sed -e s@\<TWO_CONTAINER_NAME\>@$TWO_CONTAINER_NAME@ > appspec_two.yaml
+
+      # task def를 두개 만듬
+      - python ./server/edit_task_def.py
+
+      - cat $EDITED_TASK_DEF1
+      - cat appspec.yaml
+      - cat $EDITED_TASK_DEF2
+      - cat appspec_two.yaml
+
+artifacts:
+  files:
+    - appspec.yaml
+    - task_definition.json
+    - appspec_two.yaml
+    - task_definition_two.json

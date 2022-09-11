@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  two-ecs-deploy-tf:
+    container_name: 'two-ecs-deploy-tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '$HOME/workspace/terraform/7e3ae5ade965'
+    volumes:
+      - $HOME/.aws:$HOME/.aws:ro # 호스트 머신의 aws profile을 read only로 참조.
+      - ../../:$HOME/workspace
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: two-ecs-deploy-net
