@@ -14,6 +14,6 @@
   - `docker exec -it tf-lambda-build /bin/bash`
 
 - terraform 실행!!
-  - `cd ./terraform`
+  - `cd ./testing`
   - `terraform init`
   - `terraform apply`
