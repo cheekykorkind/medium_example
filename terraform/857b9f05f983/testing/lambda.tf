@@ -1,9 +1,9 @@
 locals {
-  container_type = [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10" ]
+  lambda_dir = [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10" ]
 }
 
 resource "null_resource" "install_dependencies" {
-  for_each    = toset(local.container_type)
+  for_each    = toset(local.lambda_dir)
 
   # path.cwd는 terraform apply실행하는곳
   provisioner "local-exec" {
