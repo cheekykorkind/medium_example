@@ -1,0 +1,7 @@
+FROM python:3.9.13-slim-bullseye
+
+RUN mkdir -p /weywey
+COPY train.sh /weywey
+
+WORKDIR /weywey
+ENTRYPOINT [ "sh", "train.sh" ]
