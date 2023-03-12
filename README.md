@@ -17,3 +17,4 @@
 [Terraform으로 AWS CodePipeline(S3 cp를 Source로) + CodeBuild만들기](terraform/e8725c2289a4)  
 [Terraform으로 AWS ECS(service 2개) Blue/Green deploy하기](terraform/7e3ae5ade965)  
 [Terraform에서 local-exec랑 docker로 AWS Lambda 패키지 인스톨하고 zip만들기](terraform/857b9f05f983)  
+[AWS SageMaker training jobs을 create해보기](aws/e01f3cfdf37a)  

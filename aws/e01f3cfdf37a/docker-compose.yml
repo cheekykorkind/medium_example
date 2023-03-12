@@ -1,0 +1,21 @@
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker-compose up --build
+version: '3.8'
+services:
+  create_training_job:
+    container_name: 'create_training_job'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '/home/$USER/workspace'
+    volumes:
+      - .:/home/$USER/workspace
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: create_training_job_net
