@@ -1,0 +1,25 @@
+version: '3.5'
+
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(getent group docker | cut -d: -f3) docker-compose up --build
+x-COMMON_BUILD_INFO: &COMMON_BUILD_INFO
+  build:
+    dockerfile: ./Dockerfile
+    context: .
+    args:
+      USER_UID: $DOCKER_UID
+      DOCKER_GID: $DOCKER_GID
+      UNAME: $USER
+  tty: true
+  stdin_open: true
+  platform: linux/x86_64
+  working_dir: '$PWD'
+  volumes:
+    - $PWD:$PWD
+    - /var/run/docker.sock:/var/run/docker.sock
+
+services:
+  tf-wait-file:
+    container_name: 'tf-wait-file'
+    user: $DOCKER_UID:$DOCKER_GID
+    <<: *COMMON_BUILD_INFO
+    entrypoint: /bin/bash

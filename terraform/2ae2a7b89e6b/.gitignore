@@ -1,0 +1,14 @@
+# terraform 상태관리 파일 ignore
+*/.terraform/*
+.terraform
+*/terraform.tfstate.d/*
+.terraform.tfstate.lock.info
+.terraform.d
+terraform.tfstate
+terraform.tfstate.backup
+
+# lambda패키지 인스톨에 사용한 임시 디렉토리는 ignore
+*/*/tmp/*
+
+# zip ignore. 상황에 따라서는 안하는편이 좋을수도 있음.
+app.zip
