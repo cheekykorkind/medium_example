@@ -18,3 +18,4 @@
 [Terraform으로 AWS ECS(service 2개) Blue/Green deploy하기](terraform/7e3ae5ade965)  
 [Terraform에서 local-exec랑 docker로 AWS Lambda 패키지 인스톨하고 zip만들기](terraform/857b9f05f983)  
 [AWS SageMaker training jobs을 create해보기](aws/e01f3cfdf37a)  
+[Terraform에서 파일 만들때 까지 기다리는 방법](terraform/2ae2a7b89e6b)  
