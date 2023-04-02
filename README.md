@@ -19,3 +19,4 @@
 [Terraform에서 local-exec랑 docker로 AWS Lambda 패키지 인스톨하고 zip만들기](terraform/857b9f05f983)  
 [AWS SageMaker training jobs을 create해보기](aws/e01f3cfdf37a)  
 [Terraform에서 파일 만들때 까지 기다리는 방법](terraform/2ae2a7b89e6b)  
+[Terraform으로 AWS Step Functions에서 Map으로 Lambda실행](terraform/f4de452fd538)  
