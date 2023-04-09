@@ -20,3 +20,4 @@
 [AWS SageMaker training jobs을 create해보기](aws/e01f3cfdf37a)  
 [Terraform에서 파일 만들때 까지 기다리는 방법](terraform/2ae2a7b89e6b)  
 [Terraform으로 AWS Step Functions에서 Map으로 Lambda실행](terraform/f4de452fd538)  
+[AWS Step Functions(Express) 워크플로의 실행내역 보이도록하기](terraform/1b4e8c24a60d)  
