@@ -1,0 +1,22 @@
+version: '3.8'
+
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker-compose up -d
+services:
+  sfn-standard-distributed-map-tf:
+    container_name: 'sfn-standard-distributed-map-tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    working_dir: '/workspace'
+    volumes:
+      - ./:/workspace
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: sfn-standard-distributed-map-net
