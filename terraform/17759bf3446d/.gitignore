@@ -7,6 +7,3 @@
 terraform.tfstate
 terraform.tfstate.backup
 .terraform.lock.hcl
-
-# lambda패키지 인스톨에 사용한 임시 디렉토리는 ignore
-/testing/lambda/*/tmp/
