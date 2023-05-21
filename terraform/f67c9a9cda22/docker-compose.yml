@@ -1,0 +1,23 @@
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker-compose up
+version: '3.8'
+services:
+  remote-state-tf:
+    container_name: 'remote-state-tf'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    stdin_open: true
+    platform: linux/x86_64
+    working_dir: '$PWD'
+    volumes:
+      - $PWD:$PWD
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: remote-state-tf-net

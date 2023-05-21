@@ -23,3 +23,4 @@
 [AWS Step Functions(Express) 워크플로의 실행내역 보이도록하기](terraform/1b4e8c24a60d)  
 [Terraform으로 AWS Step Functions에서 Distributed Map으로 Lambda실행](terraform/99d58406f165)  
 [Terraform으로 AWS Lambda(docker)사용하기](terraform/17759bf3446d)  
+[terraform_remote_state로 다른 Terraform의 값 참조하기](terraform/f67c9a9cda22)  
