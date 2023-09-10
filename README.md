@@ -24,3 +24,4 @@
 [Terraform으로 AWS Step Functions에서 Distributed Map으로 Lambda실행](terraform/99d58406f165)  
 [Terraform으로 AWS Lambda(docker)사용하기](terraform/17759bf3446d)  
 [terraform_remote_state로 다른 Terraform의 값 참조하기](terraform/f67c9a9cda22)  
+[AWS Lambda를 테스트할 때 pytest 사용법 팁](aws/2799101f1a20)  
