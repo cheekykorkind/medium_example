@@ -1,0 +1,17 @@
+version: "3.9"
+
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -u $USER) docker-compose up --build
+services:
+  lambda-rspec:
+    container_name: lambda-rspec
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      args:
+        USER_UID: $DOCKER_UID
+        USER_GID: $DOCKER_GID
+        UNAME: $USER
+    volumes:
+      - ./:/workspace/myapp
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
