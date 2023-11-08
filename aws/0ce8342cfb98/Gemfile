@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'rexml' # aws sdk에 필요
+gem 'aws-sdk-s3'
+gem 'rspec'
