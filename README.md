@@ -26,3 +26,4 @@
 [terraform_remote_state로 다른 Terraform의 값 참조하기](terraform/f67c9a9cda22)  
 [AWS Lambda를 테스트할 때 pytest 사용법 팁](aws/2799101f1a20)  
 [AWS Lambda를 테스트할 때 rspec 사용법 팁](aws/0ce8342cfb98)  
+[Terraform에서 mock을 활용해서 테스트하기(terraform test)](terraform/63f09e48989e)  
