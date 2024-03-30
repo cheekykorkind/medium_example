@@ -1,0 +1,23 @@
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -g $USER) docker compose up
+version: '3.8'
+services:
+  tf-mock-test:
+    container_name: 'tf-mock-test'
+    user: $DOCKER_UID:$DOCKER_GID
+    build:
+      context: .
+      args:
+        UID: $DOCKER_UID
+        GID: $DOCKER_GID
+        UNAME: $USER
+    tty: true
+    stdin_open: true
+    platform: linux/x86_64
+    working_dir: '/workspace'
+    volumes:
+      - ./:/workspace
+    entrypoint: /bin/bash
+
+networks:
+  default:
+    name: tf-mock-test-net

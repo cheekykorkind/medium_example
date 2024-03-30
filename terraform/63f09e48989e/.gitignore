@@ -1,0 +1,12 @@
+# terraform 상태관리 파일 ignore
+*/.terraform/*
+.terraform
+*/terraform.tfstate.d/*
+.terraform.tfstate.lock.info
+.terraform.d
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# terraform-aws-modules/lambda/aws module이 생성하는 파일 ignore
+**/artifacts_dir/*
