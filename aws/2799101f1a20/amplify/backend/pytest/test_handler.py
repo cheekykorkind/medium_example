@@ -38,7 +38,7 @@ from function.myFunction.src.index import *
     ],
 )
 def test_handler(event, envs, result_url, expected):
-    Set the environment variable in index.py to test.
+    # Set the environment variable in index.py to test.
     mp = pytest.MonkeyPatch()
     for key, value in envs.items():
         mp.setenv(key, value)
