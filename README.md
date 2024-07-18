@@ -27,3 +27,4 @@
 [AWS Lambda를 테스트할 때 pytest 사용법 팁](aws/2799101f1a20)  
 [AWS Lambda를 테스트할 때 rspec 사용법 팁](aws/0ce8342cfb98)  
 [Terraform에서 mock을 활용해서 테스트하기(terraform test)](terraform/63f09e48989e)  
+[LocalStack v3.5.0을 Terraform으로 Provisioning!](localstack/4b72217a1dc7)  
