@@ -1,0 +1,43 @@
+version: "3.9"
+
+x-AWS_ENV: &AWS_ENV
+  AWS_DEFAULT_REGION: us-east-1
+  AWS_ACCESS_KEY_ID: test
+  AWS_SECRET_ACCESS_KEY: test
+
+# docker compose up --build
+services:
+  boto3-pi:
+    container_name: "boto3-pi"
+    image: localstack/localstack:3.5.0
+    ports:
+      - "127.0.0.1:4566:4566" # LocalStack Gateway
+    environment:
+      DEBUG: 1
+      TF_VERSION: 1.9.2
+      <<: *AWS_ENV
+
+    volumes:
+      - "./localstack/volume:/var/lib/localstack"
+      - "./terraform:/var/lib/terraform"
+      - "./localstack/init/tf_install.sh:/etc/localstack/init/boot.d/tf_install.sh" # executed in the container before localstack starts
+      - "./localstack/init/tf_apply.sh:/etc/localstack/init/ready.d/tf_apply.sh" # executed when localstack becomes ready
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  boto3-pi-py:
+    container_name: boto3-pi-py
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - boto3-pi
+    volumes:
+      - ./python:/workspace/myapp
+    tty: true
+    environment:
+      <<: *AWS_ENV
+    entrypoint: |
+      bash -e -c "
+      # pip install -r ./requirements.txt
+      pip install -r ./requirements.txt --target ./packages
+      /bin/bash
+      "
