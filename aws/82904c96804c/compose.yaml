@@ -1,0 +1,17 @@
+# docker compose up --build
+services:
+  tf-dynamodb-s3-export:
+    container_name: tf-dynamodb-s3-export
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./terraform:/workspace/terraform
+    tty: true
+    entrypoint: |
+      bash -e -c "
+      cd ./python
+      pip install -r ./requirements.txt
+      cd ../
+      /bin/bash
+      "
