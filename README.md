@@ -30,3 +30,4 @@
 [LocalStack v3.5.0을 Terraform으로 Provisioning!](localstack/4b72217a1dc7)  
 [boto3의 client의 프로그래밍 인터페이스를 호출하기까지!](aws/bc21b6937503)  
 [DynamoDB의 S3 export사용](aws/82904c96804c)  
+[TLS를 적용한 MQTT패킷을 Wireshark로 확인하는 방법(paho-mqtt와 AWS IoT Core를 사용)](aws/38624ae1019a)  
