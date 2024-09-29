@@ -1,0 +1,9 @@
+# terraform
+*/**/.terraform/
+*/**/terraform.tfvars
+*/**/terraform.tfstate
+*/**/terraform.tfstate.backup
+
+
+# json_from_gzs.py가 만든 json파일
+combined_gzs.json
