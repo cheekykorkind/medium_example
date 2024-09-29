@@ -1,0 +1,6 @@
+*.pem
+*.pem.crt
+*.pem.key
+mqttsslkeys.log
+
+*.pcap

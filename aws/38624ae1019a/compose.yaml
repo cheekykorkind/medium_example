@@ -1,0 +1,21 @@
+services:
+  mqtt-tls-wireshark:
+    container_name: 'mqtt-tls-wireshark'
+    build:
+      context: .
+    tty: true
+    networks:
+      mqtt-tls-wireshark-net:
+        ipv4_address: 192.168.255.3
+    working_dir: '/workspace/myapp'
+    volumes:
+      - ./:/workspace/myapp
+    entrypoint: /bin/bash
+
+networks:
+  mqtt-tls-wireshark-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.255.0/24
