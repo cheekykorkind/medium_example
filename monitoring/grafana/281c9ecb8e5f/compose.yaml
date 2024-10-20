@@ -1,0 +1,24 @@
+services:
+  grafana-hello:
+    container_name: 'grafana-hello'
+    image: grafana/grafana-oss:11.2.2
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+    depends_on:
+      - grafana-influxdb
+
+  grafana-influxdb:
+    container_name: 'grafana-influxdb'
+    image: influxdb:2.7-alpine
+    ports:
+      - "8086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: adminadmin
+      DOCKER_INFLUXDB_INIT_ORG: grafana_influxdb_org
+      DOCKER_INFLUXDB_INIT_BUCKET: grafana_influxdb_db
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: example==
