@@ -31,3 +31,4 @@
 [boto3의 client의 프로그래밍 인터페이스를 호출하기까지!](aws/bc21b6937503)  
 [DynamoDB의 S3 export사용](aws/82904c96804c)  
 [TLS를 적용한 MQTT패킷을 Wireshark로 확인하는 방법(paho-mqtt와 AWS IoT Core를 사용)](aws/38624ae1019a)  
+[InfluxDB 실습하면서, 시계열 데이터베이스(TSDB) 개념 정리](database/tsdb/d5800703ef63)  
