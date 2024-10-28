@@ -1,0 +1,17 @@
+# DOCKER_UID=$(id -u $USER) DOCKER_GID=$(id -u $USER) docker compose up --build
+services:
+  k6-start:
+    container_name: 'k6-start'
+    user: $DOCKER_UID:$DOCKER_GID
+    image: grafana/k6:0.54.0
+    tty: true
+    working_dir: '/app'
+    volumes:
+      - ./:/app
+    entrypoint: /bin/sh
+  
+  k6-start-nginx:
+    container_name: 'k6-start-nginx'
+    image: nginx:1.26.2-alpine-slim
+    volumes:
+      - ./nginx:/usr/share/nginx/html/one
