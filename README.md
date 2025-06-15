@@ -35,3 +35,4 @@
 [InfluxDB를 사용하는 Grafana 첫걸음](monitoring/grafana/281c9ecb8e5f)  
 [k6 시작하기](testing/k6/6981e09487eb)  
 [InfluxDB OSS v2: Series Cardinality 3 vs. 100,000](database/tsdb/e430010b68d6)  
+[Getting started with AWS SQS dead-letter queues](terraform/101811ef7093)  
