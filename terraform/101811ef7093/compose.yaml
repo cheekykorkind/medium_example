@@ -1,0 +1,14 @@
+services:
+  dlq-lambda-tf:
+    container_name: 'dlq-lambda-tf'
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    tty: true
+    stdin_open: true
+    working_dir: /workspace/myapp
+    volumes:
+      - ./:/workspace/myapp
+    environment:
+      AWS_DEFAULT_REGION: ap-northeast-1
+    entrypoint: /bin/bash
